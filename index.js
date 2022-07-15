@@ -6,7 +6,6 @@ import {
     Image,
     NativeModules,
     requireNativeComponent,
-    ViewPropTypes,
     StyleSheet,
 } from 'react-native'
 
@@ -124,7 +123,6 @@ const FastImageSourcePropType = PropTypes.shape({
 })
 
 FastImage.propTypes = {
-    ...ViewPropTypes,
     source: PropTypes.oneOfType([FastImageSourcePropType, PropTypes.number]),
     onLoadStart: PropTypes.func,
     onProgress: PropTypes.func,
