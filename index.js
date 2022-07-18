@@ -8,6 +8,7 @@ import {
     requireNativeComponent,
     StyleSheet,
 } from 'react-native'
+import { ViewPropTypes } from 'deprecated-react-native-prop-types';
 
 const resolveAssetSource = require('react-native/Libraries/Image/resolveAssetSource')
 
@@ -123,6 +124,7 @@ const FastImageSourcePropType = PropTypes.shape({
 })
 
 FastImage.propTypes = {
+    ...ViewPropTypes,
     source: PropTypes.oneOfType([FastImageSourcePropType, PropTypes.number]),
     onLoadStart: PropTypes.func,
     onProgress: PropTypes.func,
