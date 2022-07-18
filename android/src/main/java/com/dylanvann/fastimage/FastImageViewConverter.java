@@ -6,7 +6,6 @@ import android.widget.ImageView.ScaleType;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
-import com.facebook.react.bridge.NoSuchKeyException;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 
@@ -29,7 +28,7 @@ class FastImageViewConverter {
             }
             LazyHeaders headers = headersBuilder.build();
             glideUrl = new GlideUrl(uriProp, headers);
-        } catch (NoSuchKeyException e) {
+        } catch (Exception e) {
             // If there is no headers object.
             glideUrl = new GlideUrl(uriProp);
         }
