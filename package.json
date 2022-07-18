@@ -36,6 +36,7 @@
     "test:jest": "jest *.js"
   },
   "dependencies": {
+    "deprecated-react-native-prop-types": "^2.2.0",
     "prop-types": "^15.5.10"
   },
   "devDependencies": {
