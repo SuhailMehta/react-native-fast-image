@@ -21,6 +21,8 @@ android {
     compileSdkVersion _compileSdkVersion
     buildToolsVersion _buildToolsVersion
 
+    namespace "com.dylanvann.fastimage"
+
     defaultConfig {
         minSdkVersion _minSdkVersion
         targetSdkVersion _targetSdkVersion
