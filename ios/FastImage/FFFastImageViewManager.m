@@ -24,9 +24,10 @@ RCT_EXPORT_METHOD(preload:(nonnull NSArray<FFFastImageSource *> *)sources)
     NSMutableArray *urls = [NSMutableArray arrayWithCapacity:sources.count];
 
     [sources enumerateObjectsUsingBlock:^(FFFastImageSource * _Nonnull source, NSUInteger idx, BOOL * _Nonnull stop) {
-        [source.headers enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString* header, BOOL *stop) {
-            [[SDWebImageDownloader sharedDownloader] setValue:header forHTTPHeaderField:key];
-        }];
+        // Scope each source's headers to its own URL. The previous code set every
+        // source's headers on the shared downloader before prefetching any of them,
+        // so one host's credentials were sent to all the others (CVE-2020-7696).
+        [FFFastImageSource registerHeaders:source.headers forURL:source.uri];
         [urls setObject:source.uri atIndexedSubscript:idx];
     }];
 

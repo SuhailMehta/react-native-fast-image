@@ -58,10 +58,9 @@
     if (_source != source) {
         _source = source;
         
-        // Set headers.
-        [_source.headers enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString* header, BOOL *stop) {
-            [[SDWebImageDownloader sharedDownloader] setValue:header forHTTPHeaderField:key];
-        }];
+        // Set headers, scoped to this URL only. Writing them onto the shared
+        // downloader would attach them to every later image request (CVE-2020-7696).
+        [FFFastImageSource registerHeaders:_source.headers forURL:_source.uri];
         
         // Set priority.
         SDWebImageOptions options = 0;
