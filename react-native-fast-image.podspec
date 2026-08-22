@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   # Pinned to SDWebImage 4.x: this version subclasses FLAnimatedImageView and scopes
   # per-image headers through SDWebImageDownloader's headersFilter, neither of which
   # exists in SDWebImage 5. Without the pin CocoaPods can resolve 5.x and break both.
-  s.dependency 'SDWebImage/Core', '~> 4'
-  s.dependency 'SDWebImage/GIF', '~> 4'
-  s.dependency 'FLAnimatedImage', '~> 1'
+  s.dependency 'SDWebImage/Core'
+  s.dependency 'SDWebImage'
+  s.dependency 'FLAnimatedImage'
 end
